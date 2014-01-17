@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Presentation</title>
+    <meta charset='utf-8'>
+    <script src='./slides.js'></script>
+  </head>
+  <body style='display: none'>
+    <section class='slides layout-regular template-default'>
+      <article class='biglogo'>
+      </article>
+
+      <article>
+        <h1>
+          Aplicaciones RIA 
+          <br>
+          en HTML5
+        </h1>
+        <p>
+         <img style='height: 43px' src='speaker.png'>
+        José Manuel Corral
+          <br>
+          4 Febrero, 2014
+        </p>
+      </article>
+      
+      <article>
+        <h3>Introducción a HTML5</h3>
+        <p>
+          HTML5 es la combinación de las diferentes tecnologías:
+        </p>
+         <ul class="build">
+          <li>
+           Lenguaje de Marcado HTML (versión 5)
+          </li>
+          <li>
+            Hojas de Estilo en cascada CSS (versión 3).
+          </li>
+          <li>
+            Nuevas funcionalidades en la Api de Javascript.
+          </li>
+        </ul>
+        <img src="Html5_agrupation.png" class="html5imggroup"/>
+      </article>
+      <article class='Htmlt'>
+        <h1>Novedades en el Lenguaje de Marcado HTML5</h1>
+      </article>
+      <article>
+        <h3>
+          Ejemplo documento base en HTML5
+        </h3>
+        <p>Un primer ejemplo de un documento mínimo en HTML 5 sería:</p>
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;Title of the document&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Contenido del documento
+    &lt;/body&gt;
+&lt;/html&gt;  
+        </pre>
+      </article>
+      <article class='smaller'>
+        <h3>
+          Nuevos Tags en HTML 5: Canvas
+        </h3>
+          <p>
+          El elemento canvas puede definirse como un entorno para crear imágenes dinámicas. El propio elemento es relativamente simple. Lo único que hay que especificar al usarlo son sus dimensiones.
+          </p>
+        <pre>
+&lt;canvas id=&quot;entorno_canvas&quot; width=&quot;360&quot; height=&quot;240&quot;&gt;;
+&lt;/canvas&gt;
+        </pre>
+        <p>Cualquier cosa que escribamos entre la apertura y cierre de la etiqueta canvas solamente será interpretado por navegadores que no soportan aún la nueva etiqueta.</p>
+        <pre>
+&lt;canvas id=&quot;entorno_canvas&quot; width=&quot;360&quot; height=&quot;240&quot;&gt;
+ &lt;p&gt;Tu navegador no soporta canvas: Aqu&#237; deber&#237;as de ver una imagen :&lt;/p&gt;
+ &lt;img src=&quot;html5_logo.png&quot; alt=&quot;HTML5&quot; /&gt;
+&lt;/canvas&gt;
+        </pre>
+      </article>
+
+      <article class='smaller'>
+        <h3>
+          Nuevos Tags en HTML 5: Audio
+        </h3>
+        <p>Empotrar un archivo de audio en HTML5 es muy simple:</p>
+        <pre>
+&lt;audio src=&quot;archivo.mp3&quot;&gt;
+&lt;/audio&gt;
+        </pre>
+        <p>Si queremos más opciones:</p>
+        <pre>
+&lt;audio src=&quot;archivo.mp3&quot; autoplay loop controls&gt;
+&lt;/audio&gt;
+        </pre>
+        <p>Es posible controlarlo desde Javascript</p>
+        <pre>
+var player = document.getElementsByTagName('audio');
+player.play();
+player.stop();
+player.volume += 0.1;
+player.volume -= 0.1;
+        </pre>
+      </article>
+      <article class='smaller'>
+        <h3>
+          Nuevos Tags en HTML 5: Video
+        </h3>
+        <p>Empotrar un archivo de video en HTML5 es muy simple lo ideal es darle un tamaño:</p>
+        <pre>
+&lt;video src=&quot;archivo.mp4&quot; controls width=&quot;360&quot; height=&quot;240&quot;&gt;
+&lt;/video&gt;
+        </pre>
+        <p>Si queremos más opciones:</p>
+        <pre>
+&lt;video src=&quot;archivo.mp4&quot; autoplay loop controls width=&quot;360&quot; height=&quot;240&quot;&gt;
+&lt;/video&gt;
+        </pre>
+        <p>Es posible controlarlo desde Javascript</p>
+        <pre>
+var player = document.getElementsByTagName('video');
+player.play();
+player.stop();
+player.volume += 0.1;
+player.volume -= 0.1;
+        </pre>
+      </article>
+      <article class='smaller'>
+        <h3>
+          Nuevos Tags en HTML 5: Tags Semánticos
+        </h3>
+        <p>Nuevos tags que ayudan a los motores de búsqueda a localizar el contenido de nuestra web.</p>
+        <pre>
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;hgroup&gt;
+      &lt;h1&gt;Titulo Pagina&lt;/h1&gt;
+      &lt;h2&gt;Titulo de Subpagina&lt;/h2&gt;
+    &lt;/hgroup&gt;
+  &lt;/header&gt;
+
+  &lt;nav&gt;
+   &lt;ul&gt;
+     Navegacion
+   &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;section&gt;
+   &lt;article&gt;
+     &lt;header&gt;
+       &lt;h1&gt;Title&lt;/h1&gt;
+     &lt;/header&gt;
+     &lt;section&gt;
+       Contenido
+     &lt;/section&gt;
+   &lt;/article&gt;
+  &lt;/section&gt;
+        </pre>
+      </article>
+      <article class="smaller">
+        <h3>
+          Nuevos Tags en HTML 5: Tags Semanticos (II)
+        </h3>
+        <pre>
+  &lt;aside&gt;
+   Informaci&#243;n adicional
+  &lt;/aside&gt;
+
+  &lt;figure&gt;
+    &lt;img src=&quot;...&quot;/&gt;
+    &lt;figcaption&gt;Pie de foto&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+  &lt;footer&gt;
+   Pie de pagina
+   &lt;time datetime=&quot;2010-11-08&quot;&gt;2010&lt;/time&gt;.
+  &lt;/footer&gt;
+&lt;/body&gt;
+        </pre>
+        <p>Estas nuevas etiquetas, para el DOM, són iguales a una etiqueta &lt;DIV&gt;. Són etiquetas que se utilizan para categorizar el contenido.</p>
+      </article>
+      <article>
+        <h3>
+         Nuevos Tags en HTML 5: Formularios
+        </h3>
+        <p>Lista de Elementos con Autocompletado</p>
+        <pre>
+&lt;input list=&quot;cars&quot;/&gt;
+&lt;datalist id=&quot;cars&quot;&gt;
+  &lt;option value=&quot;BMW&quot;/&gt;
+  &lt;option value=&quot;Ford&quot;/&gt;
+  &lt;option value=&quot;Volvo&quot;/&gt;
+&lt;/datalist&gt;
+        </pre>
+      <p>
+          Demo
+      </p>
+       <input list="cars" class="demo"/>
+        <datalist id="cars">
+          <option value="BMW"/>
+          <option value="Ford"/>
+          <option value="Volvo"/>
+        </datalist>   
+      </article>
+
+      <article>
+        <h3>
+          Nuevos Tags en HTML5: Formularios (II)
+        </h3>
+        <p>Barras de progreso:</p>
+        <pre>
+&lt;progress value=&quot;75&quot; max=&quot;100&quot;&gt;3/4 complete&lt;/progress&gt;
+        </pre>
+        <p>Demo</p>
+        <progress value="75" max="100">3/4 complete</progress>
+      </article>
+       <article class='smaller'>
+        <h3>
+        Nuevos Tags en HTML5: Formularios (III)
+        </h3>
+        <p>La etiqueta input ahora posee muchas características que nos hará la vida más facil.</p>
+        <pre>
+&lt;input type=&quot;text&quot; required /&gt;
+&lt;input type=&quot;email&quot; value=&quot;some@email.com&quot; /&gt;
+&lt;input type=&quot;date&quot; min=&quot;2010-08-14&quot; max=&quot;2011-08-14&quot; value=&quot;2010-08-14&quot;/&gt;
+&lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;50&quot; value=&quot;10&quot; /&gt;
+&lt;input type=&quot;search&quot; results=&quot;10&quot; placeholder=&quot;Search...&quot; /&gt;
+&lt;input type=&quot;tel&quot;  placeholder=&quot;(555) 555-5555&quot; 
+  pattern=&quot;^\(?\d{3}\)?[-\s]\d{3}[-\s]\d{4}.*?$&quot; /&gt;
+&lt;input type=&quot;color&quot; placeholder=&quot;e.g. #bbbbbb&quot; /&gt;
+&lt;input type=&quot;number&quot; step=&quot;1&quot; min=&quot;-5&quot; max=&quot;10&quot; value=&quot;0&quot; /&gt;
+        </pre>
+        <p>Demo:</p>
+        <p>
+            <input type="text" required />
+            <input type="email" value="some@email.com" />
+            <input type="date" min="2010-08-14" max="2011-08-14" value="2010-08-14"/>
+        </p>
+        <p>
+        <input type="range" min="0" max="50" value="10" />
+        <input type="search" results="10" placeholder="Search..." />
+        <input type="tel"  placeholder="(555) 555-5555" pattern="^\(?\d{3}\)?[-\s]\d{3}[-\s]\d{4}.*?$" />
+        </p>
+        <p>
+        <input type="color" placeholder="e.g. #bbbbbb" />
+        <input type="number" step="1" min="-5" max="10" value="0" />
+        </p>
+      </article>
+      <article class='smaller'>
+        <h3>
+          Nuevos Tags en HTML5: Formularios (IV) 
+        </h3>
+        <p>Teniendo en consideración los mobiles/tablets, etc... </p>
+        <pre>
+&lt;input type=&quot;text&quot; /&gt;
+&lt;input type=&quot;number&quot; /&gt;
+&lt;input type=&quot;email&quot; /&gt;
+&lt;input type=&quot;tel&quot; /&gt;
+        </pre>
+        <img src="android-form-text.png" class="mobilescreenshot"/>
+        <img src="android-form-number.png" class="mobilescreenshot"/>
+        <img src="iphone-form-email.png" class="mobilescreenshot"/>
+        <img src="iphone-form-tel.png" class="mobilescreenshot"/>
+     </article>
+     <article class='smaller'>
+        <h3>
+          Nuevos Tags en HTML5: Tags Deprecados
+        </h3>
+        <p>Esta es la lista de tags html de versiones anteriores, ya eliminados.</p>
+        <pre>
+&lt;acronym&gt;
+&lt;applet&gt;
+&lt;basefont&gt;
+&lt;big&gt;
+&lt;center&gt;
+&lt;dir&gt;
+&lt;font&gt;
+&lt;frame&gt;
+&lt;frameset&gt;
+&lt;isindex&gt;
+&lt;noframes&gt;
+&lt;s&gt;
+&lt;strike&gt;
+&lt;tt&gt;
+&lt;u&gt;
+        </pre>
+    </article>
+    <article>
+    <h1>Novedades en CSS3</h1>
+    </article>
+    <article class='smaller'>
+      <h3>
+        Nuevos Selectores
+      </h3>
+      <p>Para saber si un elemento es par o impar, y aplicar en cada caso un estilo diferente</p>
+      <pre>
+.row:nth-child(even) {
+  background: #dde;
+}
+.row:nth-child(odd) {
+  background: white;
+}
+    </pre>
+    <p>Es muy común el uso de esto en "tablas zebra".</p>
+    <img src="zebra.gif" />
+    </article>
+    <article>
+      <h3>
+        Hasta aquí... ¿Preguntas?
+      </h3>
+      <p>
+          <img class='centered' style='height: 500px' src='questions.png'>
+        </p>
+      <div class="build">
+        <p>¿Quereis más helpers?</p>
+        <p>¿Más Testing?</p>
+      </div>
+    </article>
+    <article class='smaller'>
+      <h3>
+        Strongly Typed MVC helpers
+      </h3>
+      <p>
+          Actualmente, cuando generamos el CRUD de uno de nuestros modelo en un proyecto de ASP.NET MVC 4, vemos que se correlacionan las propiedades o campos de dicho modelo, con difentes Html helpers. Éstos, tienen en cuenta los DataAnnotations, y el ModelMetadata de nuestro modelo.
+        </p>
+      <p>Ejemplo:</p>
+      <pre>
+namespace EjemploMVC.Models
+{
+  public class Person
+  {
+    [Display(Name="Código")]
+    public Int32 Id { get; set; }
+    [Display(Name = "Nombre")]
+    public string Name { get; set; }
+    [Display(Name = "Apellido 1")]
+    public string FirstSurname { get; set; }
+    [Display(Name = "Apellido 2")]
+    public string SecondSurname { get; set; }
+    [Display(Name = "Fecha Nacimiento")]
+    public DateTime BornDate { get; set; }
+    [Display(Name = "Fecha Registro")]
+    public DateTime Register { get; set; } 
+    }
+}</pre>
+    </article>
+    <article class='smaller'>
+      <h3>Definiendo Metadata y DataAnnotations</h3>
+      <p>DataAnnotations: son validaciones de datos de acuerdo a nuestras necesidades. Esas necesidades son decoraciones que indicaremos a los miembros de nuestras entidades y Datos. Una decoración corresponderá a una validación.</p>
+      <p>Ejemplo:</p>
+      <pre>
+public class Person
+{
+  [Required(ErrorMessage = "El campo código de Persona es obligatorio.")]
+  public Int32 Id { get; set; }
+  [...]
+}
+</pre>
+      <p>ModelMetadata: Proporciona un contenedor para los metadatos comunes, para la clase ModelMetadataProvider y para la clase ModelValidator de un modelo de datos.</p>
+      <pre>
+public class Person
+{
+  [Display(Name="Código")]
+  public Int32 Id { get; set; }
+  [...]
+}
+</pre>
+</article>
+<article class="smaller">
+  <h3>Ejemplo de HTML Helper Strongly Typed</h3>
+  <p>En el siguiente ejemplo, vamos a crear un HtmlHelper que genere tanto el Label, como el TextBox, además siendo Strongly-Typed, Determinaremos su tipo (texto o fecha), haciendo aparecer el input como es debido, y mostraremos un mensaje de requerido si es necesario.
+  </p>
+  <p>Nuestra vista tendrá que devolver el siguiente html:</p>
+  <pre>
+    &lt;label for="inputid"&gt;textoamostrar&lt;/label&gt;
+    &lt;input type="[text|date]" value="valor" id="inputid" name="inputid" 
+    class="[required|]" /&gt;
+  </pre>
+</article>
+<article class="smaller">
+  <h3>Por lo tanto ha de satisfacer el siguientes tests:</h3>
+  <pre>[Test]
+public void FieldTestDate(){
+  var FakeHtmlHelper = CreateStronglyTypedHtmlHelperWithaPerson();
+  String executed = FieldHelper.Field(FakeHtmlHelper, x=>x.BornDate);
+  String expected="&lt;label for=\"BornDate\"&gt;Fecha Nacimiento&lt;/label&gt;
+    &lt;input type=\"date\" value=\"valor\" id=\"BornDate\" name=\"BornDate\" /&gt;"
+  Assert.AreEqual(expected, executed);
+}
+[Test]
+public void FieldTestText(){
+  var FakeHtmlHelper = CreateStronglyTypedHtmlHelperWithaPerson();
+  String executed = FieldHelper.Field(FakeHtmlHelper, x=>x.Name);
+  String expected="&lt;label for=\"Name\"&gt;Nombre&lt;/label&gt;
+    &lt;input type=\"text\" value=\"valor\" id=\"name\" name=\"name\" /&gt;"
+  Assert.AreEqual(expected, executed);
+}
+[Test]
+public void FieldTestRequired(){
+  var FakeHtmlHelper = CreateStronglyTypedHtmlHelperWithaPerson();
+  String executed = FieldHelper.Field(FakeHtmlHelper, x=>x.Name);
+  String expected="&lt;label for=\"Name\"&gt;Nombre&lt;/label&gt;
+    &lt;input type=\"text\" value=\"valor\" id=\"name\" name=\"name\" 
+    class=\"[required|]\" /&gt;"
+  Assert.AreEqual(expected, executed);
+}</pre>
+</article>
+<article class="smaller">
+  <h3>Vista Asociada</h3>
+  <p>La llamada a nuestro helper desde la vista será:</p>
+  <pre>
+    @Html.Field(model=>model.Id)
+    @Html.Field(model=>model.Name)
+    @Html.Field(model=>model.BornDate)
+  </pre>
+  <p>y su salida html:</p>
+  <pre>
+&lt;label for="Id"&gt;Codigo&lt;/label&gt;
+&lt;input type="text" value="" id="Id" name="Id" class="required" /&gt; 
+
+&lt;label for="Name"&gt;Nombre&lt;/label&gt;
+&lt;input type="text" value="" id="Name" name="Name" /&gt; 
+
+&lt;label for="Id"&gt;Fecha Nacimiento&lt;/label&gt;
+&lt;input type="date" value="" id="BornDate" name="BornDate" /&gt; 
+  </pre>
+</article>      
+<article class="smaller">
+  <h3>Nuestro Helper</h3>
+  <pre>
+public static MvcHtmlString Field&lt;TModel, TValue&gt;(this HtmlHelper&lt;TModel&gt; html,
+              Expression&lt;Func&lt;TModel, TValue&gt;&gt; expression) where TModel: class
+{
+   var modelMetadata = ModelMetadata.FromLambdaExpression&lt;TModel, TProperty&gt;(
+          expression, 
+          new ViewDataDictionary &lt;TModel&gt;());
+   MvcHtmlString.Create(String.Concat(CreateLabel(modelMetadata.PropertyName), 
+      CreateInput(modelMetadata.PropertyName, 
+                  modelMetadata.IsRequired, 
+                  modelMetadata.value.GetType())));
+}
+  </pre>
+  <p>Nuestro Helper recibirá como parámetro una estructura de arbol que contiene una Lambda Expression. O como yo lo suelo llamar un <b>Func</b> descompilado.</p>
+</article>
+<article class="smaller">
+  <h3>Estrategias y patrones para crear Helpers</h3>
+  <p>Existen muchas estrategias y patrones para la generación de HTML Helpers.</p>
+  <ul class="build">
+    <li>Utilizar el Patron Builder</li>
+    <li>Utilizar Fluent Definitions en los Helpers</li>
+    <li>Utilizar un Proyecto Anexo a la solución MVC</li>
+    <li>Utilizar una clase de Test por Helper</li>
+    <li>Empaquetar los Helpers con Nuget</li>
+    <li>Incluir ModelBinders</li>
+    <li>Añadir T4 Scaffolding</li>
+    <li>Namespace propio para los HtmlHelpers dentro del objeto HtmlHelper</li>
+  </ul>
+</article>
+<article class="smaller">
+  <h3>
+  Caso Real - Sushi MVC Helpers
+  </h3>
+  <p>Instalación via Nuget: PM> Install package sushiMVC</p>
+  <p>Pagina del proyecto: <a href="http://sushi.azurewebsites.net">http://sushi.azurewebsites.net</a></p>
+  <p>Sushi es una colección de MVC Helpers que intentan seguir todas esas estrategias de diseño.</p>
+  <img class="centered" src="sushi.png" />
+</article>
+ <article>
+  <h2>
+   ¡Muchas grácias por vuestra atención!
+  </h2>
+  </article>
+</section>
+</body>
+</html>
