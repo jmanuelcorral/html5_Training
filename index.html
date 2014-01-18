@@ -304,170 +304,84 @@ player.volume -= 0.1;
   background: white;
 }
     </pre>
-    <p>Es muy común el uso de esto en "tablas zebra".</p>
-    <img src="zebra.gif" />
+   <p>Es muy común el uso de esto en "tablas zebra".</p>
+   <img src="zebra.gif" style="width: 200px;height: 200px;padding: 10px;"/>
+   </article>
+ <article class="smaller">
+     <h3>Más Selectores nuevos</h3>
+     <pre>
+/* Utilizado para alineaciones tipo imagen
+div {
+    display: inline-block
+}
+
+/* Selector para los inputs que tienen un atributo específico */
+input[type="text"] {
+    background: #eee;
+}
+
+/* Negaciones */
+:not(.box) {
+    color: #00c;
+}
+:not(span)
+{
+    display: block;
+}
+/* seleccionando aún de forma más específica
+h2:first-child {...}
+
+div.text > div {...}
+
+h2 + header {...}
+     </pre>
+ </article>  
+ <article>
+     <h3>WebFonts</h3>
+     <pre>
+@font-face {
+    font-family: 'MiFuenteMolona';
+    src: url('pathAmiFuenteMolona.otf');
+}
+
+h1 {
+    font-family: 'MiFuenteMolona'
+}
+    </pre>
+<p> Con la directiva CSS @font-face podremos definir tantas fuentes como sea necesario para nuestra página. 
+    El navegador tratará de descargarlas y utilizarlas allá donde sean necesarias.</p>
+</article>
+    <article>
+    <h3>Opacidad</h3>
+    <pre>
+div {
+    background-color: rgba(255,0,0,0.47);
+}
+    </pre>
+    <p>Demo:</p>
+      <div style="background-color:rgba(255,0,0,0.47);width:600px;height:200px"></div>
     </article>
     <article>
-      <h3>
-        Hasta aquí... ¿Preguntas?
-      </h3>
-      <p>
-          <img class='centered' style='height: 500px' src='questions.png'>
-        </p>
-      <div class="build">
-        <p>¿Quereis más helpers?</p>
-        <p>¿Más Testing?</p>
-      </div>
-    </article>
-    <article class='smaller'>
-      <h3>
-        Strongly Typed MVC helpers
-      </h3>
-      <p>
-          Actualmente, cuando generamos el CRUD de uno de nuestros modelo en un proyecto de ASP.NET MVC 4, vemos que se correlacionan las propiedades o campos de dicho modelo, con difentes Html helpers. Éstos, tienen en cuenta los DataAnnotations, y el ModelMetadata de nuestro modelo.
-        </p>
-      <p>Ejemplo:</p>
-      <pre>
-namespace EjemploMVC.Models
-{
-  public class Person
-  {
-    [Display(Name="Código")]
-    public Int32 Id { get; set; }
-    [Display(Name = "Nombre")]
-    public string Name { get; set; }
-    [Display(Name = "Apellido 1")]
-    public string FirstSurname { get; set; }
-    [Display(Name = "Apellido 2")]
-    public string SecondSurname { get; set; }
-    [Display(Name = "Fecha Nacimiento")]
-    public DateTime BornDate { get; set; }
-    [Display(Name = "Fecha Registro")]
-    public DateTime Register { get; set; } 
-    }
-}</pre>
-    </article>
-    <article class='smaller'>
-      <h3>Definiendo Metadata y DataAnnotations</h3>
-      <p>DataAnnotations: son validaciones de datos de acuerdo a nuestras necesidades. Esas necesidades son decoraciones que indicaremos a los miembros de nuestras entidades y Datos. Una decoración corresponderá a una validación.</p>
-      <p>Ejemplo:</p>
-      <pre>
-public class Person
-{
-  [Required(ErrorMessage = "El campo código de Persona es obligatorio.")]
-  public Int32 Id { get; set; }
-  [...]
+        <h3>Bordes Redondeados</h3>
+        <pre>
+div{
+    border-radius: 18px;
 }
-</pre>
-      <p>ModelMetadata: Proporciona un contenedor para los metadatos comunes, para la clase ModelMetadataProvider y para la clase ModelValidator de un modelo de datos.</p>
-      <pre>
-public class Person
-{
-  [Display(Name="Código")]
-  public Int32 Id { get; set; }
-  [...]
-}
-</pre>
-</article>
-<article class="smaller">
-  <h3>Ejemplo de HTML Helper Strongly Typed</h3>
-  <p>En el siguiente ejemplo, vamos a crear un HtmlHelper que genere tanto el Label, como el TextBox, además siendo Strongly-Typed, Determinaremos su tipo (texto o fecha), haciendo aparecer el input como es debido, y mostraremos un mensaje de requerido si es necesario.
-  </p>
-  <p>Nuestra vista tendrá que devolver el siguiente html:</p>
-  <pre>
-    &lt;label for="inputid"&gt;textoamostrar&lt;/label&gt;
-    &lt;input type="[text|date]" value="valor" id="inputid" name="inputid" 
-    class="[required|]" /&gt;
-  </pre>
-</article>
-<article class="smaller">
-  <h3>Por lo tanto ha de satisfacer el siguientes tests:</h3>
-  <pre>[Test]
-public void FieldTestDate(){
-  var FakeHtmlHelper = CreateStronglyTypedHtmlHelperWithaPerson();
-  String executed = FieldHelper.Field(FakeHtmlHelper, x=>x.BornDate);
-  String expected="&lt;label for=\"BornDate\"&gt;Fecha Nacimiento&lt;/label&gt;
-    &lt;input type=\"date\" value=\"valor\" id=\"BornDate\" name=\"BornDate\" /&gt;"
-  Assert.AreEqual(expected, executed);
-}
-[Test]
-public void FieldTestText(){
-  var FakeHtmlHelper = CreateStronglyTypedHtmlHelperWithaPerson();
-  String executed = FieldHelper.Field(FakeHtmlHelper, x=>x.Name);
-  String expected="&lt;label for=\"Name\"&gt;Nombre&lt;/label&gt;
-    &lt;input type=\"text\" value=\"valor\" id=\"name\" name=\"name\" /&gt;"
-  Assert.AreEqual(expected, executed);
-}
-[Test]
-public void FieldTestRequired(){
-  var FakeHtmlHelper = CreateStronglyTypedHtmlHelperWithaPerson();
-  String executed = FieldHelper.Field(FakeHtmlHelper, x=>x.Name);
-  String expected="&lt;label for=\"Name\"&gt;Nombre&lt;/label&gt;
-    &lt;input type=\"text\" value=\"valor\" id=\"name\" name=\"name\" 
-    class=\"[required|]\" /&gt;"
-  Assert.AreEqual(expected, executed);
-}</pre>
-</article>
-<article class="smaller">
-  <h3>Vista Asociada</h3>
-  <p>La llamada a nuestro helper desde la vista será:</p>
-  <pre>
-    @Html.Field(model=>model.Id)
-    @Html.Field(model=>model.Name)
-    @Html.Field(model=>model.BornDate)
-  </pre>
-  <p>y su salida html:</p>
-  <pre>
-&lt;label for="Id"&gt;Codigo&lt;/label&gt;
-&lt;input type="text" value="" id="Id" name="Id" class="required" /&gt; 
+        </pre>
+  <p>Demo:</p>
+      <div style="background-color:rgba(255,0,0,0.47);width:600px;height:200px;border-radius:18px"></div>       
 
-&lt;label for="Name"&gt;Nombre&lt;/label&gt;
-&lt;input type="text" value="" id="Name" name="Name" /&gt; 
-
-&lt;label for="Id"&gt;Fecha Nacimiento&lt;/label&gt;
-&lt;input type="date" value="" id="BornDate" name="BornDate" /&gt; 
-  </pre>
-</article>      
-<article class="smaller">
-  <h3>Nuestro Helper</h3>
-  <pre>
-public static MvcHtmlString Field&lt;TModel, TValue&gt;(this HtmlHelper&lt;TModel&gt; html,
-              Expression&lt;Func&lt;TModel, TValue&gt;&gt; expression) where TModel: class
-{
-   var modelMetadata = ModelMetadata.FromLambdaExpression&lt;TModel, TProperty&gt;(
-          expression, 
-          new ViewDataDictionary &lt;TModel&gt;());
-   MvcHtmlString.Create(String.Concat(CreateLabel(modelMetadata.PropertyName), 
-      CreateInput(modelMetadata.PropertyName, 
-                  modelMetadata.IsRequired, 
-                  modelMetadata.value.GetType())));
-}
-  </pre>
-  <p>Nuestro Helper recibirá como parámetro una estructura de arbol que contiene una Lambda Expression. O como yo lo suelo llamar un <b>Func</b> descompilado.</p>
-</article>
-<article class="smaller">
-  <h3>Estrategias y patrones para crear Helpers</h3>
-  <p>Existen muchas estrategias y patrones para la generación de HTML Helpers.</p>
-  <ul class="build">
-    <li>Utilizar el Patron Builder</li>
-    <li>Utilizar Fluent Definitions en los Helpers</li>
-    <li>Utilizar un Proyecto Anexo a la solución MVC</li>
-    <li>Utilizar una clase de Test por Helper</li>
-    <li>Empaquetar los Helpers con Nuget</li>
-    <li>Incluir ModelBinders</li>
-    <li>Añadir T4 Scaffolding</li>
-    <li>Namespace propio para los HtmlHelpers dentro del objeto HtmlHelper</li>
-  </ul>
-</article>
-<article class="smaller">
-  <h3>
-  Caso Real - Sushi MVC Helpers
-  </h3>
-  <p>Instalación via Nuget: PM> Install package sushiMVC</p>
-  <p>Pagina del proyecto: <a href="http://sushi.azurewebsites.net">http://sushi.azurewebsites.net</a></p>
-  <p>Sushi es una colección de MVC Helpers que intentan seguir todas esas estrategias de diseño.</p>
-  <img class="centered" src="sushi.png" />
-</article>
+    </article>
+    <article>
+        <h3>Gradientes o degradados</h3>
+        <pre>
+background: -webkit-gradient(linear, left top, left bottom, from(#00abeb), 
+            to(white), color-stop(0.5, white), color-stop(0.5, #66cc00))
+background: -webkit-gradient(radial, 430, 50, 0, 430, 50, 593, from(#f00), to(#000))
+        </pre>
+        <div style="background: -webkit-gradient(linear, left top, left bottom, from(#00abeb), to(white), color-stop(0.5, white), color-stop(0.5, #66cc00));width:600px;height:200px;">a</div>
+        <div style="background: -webkit-radial-gradient(ellipse cover, #66f, #f80, #ffc);width:600px;height:200px;">b</div>
+    </article>
  <article>
   <h2>
    ¡Muchas grácias por vuestra atención!
