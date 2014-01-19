@@ -376,11 +376,33 @@ div{
         <h3>Gradientes o degradados</h3>
         <pre>
 background: -webkit-gradient(linear, left top, left bottom, from(#00abeb), 
-            to(white), color-stop(0.5, white), color-stop(0.5, #66cc00))
-background: -webkit-gradient(radial, 430, 50, 0, 430, 50, 593, from(#f00), to(#000))
+            to(white), color-stop(0.5, white), color-stop(0.5, #66cc00));
+background: background: -webkit-radial-gradient(ellipse cover, #66f, #f80, #ffc);
         </pre>
         <div style="background: -webkit-gradient(linear, left top, left bottom, from(#00abeb), to(white), color-stop(0.5, white), color-stop(0.5, #66cc00));width:600px;height:200px;">a</div>
         <div style="background: -webkit-radial-gradient(ellipse cover, #66f, #f80, #ffc);width:600px;height:200px;">b</div>
+    </article>
+    <article>
+        <h3>Flexible Box Model</h3>
+        <pre>
+.box {
+    display: box;
+    box-orient: horizontal;
+}
+
+.box .one, .box .two{
+    box-flex:1;
+}
+.box .three {
+    box-flex: 3;
+}
+        </pre>
+        <p>Demo:</p>
+        <div style="display: -webkit-box; -webkit-box-orient: horizontal;">
+            <div style="-webkit-box-flex:1;background:#eee;">Box One</div>
+            <div style="-webkit-box-flex:1">Box Two</div>
+            <div style="-webkit-box-flex:3;background:#eee;">Box Three</div>
+        </div>
     </article>
  <article>
   <h2>
